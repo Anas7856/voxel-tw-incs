@@ -491,60 +491,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ========== FOOTER ANIMATIONS ==========
 
-  // Animate footer content
-  gsap.from(".footer-content", {
-    scrollTrigger: {
-      trigger: ".footer",
-      start: "top 90%",
-      end: "top 60%",
-      scrub: 1,
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1,
-  });
-
-  // Animate footer text
-  gsap.from(".footer-text", {
-    scrollTrigger: {
-      trigger: ".footer",
-      start: "top 85%",
-      once: true,
-    },
-    opacity: 0,
-    x: -30,
-    duration: 0.8,
-    ease: "power3.out",
-  });
-
-  // Animate footer links
-  gsap.from(".footer-link", {
-    scrollTrigger: {
-      trigger: ".footer",
-      start: "top 85%",
-      once: true,
-    },
-    opacity: 0,
-    y: 20,
-    stagger: 0.1,
-    duration: 0.6,
-    ease: "power3.out",
-  });
-
-  // Animate social icons
-  gsap.from(".social-icon", {
-    scrollTrigger: {
-      trigger: ".footer",
-      start: "top 85%",
-      once: true,
-    },
-    opacity: 0,
-    scale: 0,
-    stagger: 0.1,
-    duration: 0.6,
-    ease: "back.out(1.7)",
-  });
-
   // ========== MOUSE PARALLAX EFFECT ==========
 
   document.addEventListener("mousemove", function (e) {

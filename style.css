@@ -350,7 +350,7 @@ body {
 
 @media (max-width: 768px) {
   .hero {
-    margin-top: -70px;
+    margin-top: 0px;
     padding: 0 20px;
   }
 
@@ -691,7 +691,8 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .about {
-    padding: 60px 20px;
+    height: 100% !important;
+    padding: 80px 20px 0px 20px;
   }
 
   .about-title {
@@ -729,7 +730,14 @@ body {
   position: relative;
   overflow: hidden;
 }
-
+@media (max-width: 900px) {
+  .games-section {
+    padding: 30px !important;
+  }
+  .section-header h2 {
+    font-size: 50px !important;
+  }
+}
 .section-header {
   text-align: center;
   margin-bottom: 80px;
@@ -1118,19 +1126,20 @@ body {
 /* ========== FOOTER SECTION STYLES ========== */
 .footer {
   position: relative;
-  padding: 60px 20px 40px;
+  padding: 20px 20px 20px 20px;
   background: #0a0a0a;
   border-top: 1px solid rgba(255, 13, 85, 0.2);
-  overflow: hidden;
+  overflow: visible;
 }
 
 .footer-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
+  width: 100%;
+  text-align: center;
+  /* margin: 0 auto; */
+  /* display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
   gap: 30px;
   position: relative;
   z-index: 2;
@@ -1139,8 +1148,10 @@ body {
 .footer-text {
   font-family: var(--font-manrope);
   font-size: 0.95rem;
-  color: #666;
+  text-align: center;
+  color: #ffffff;
   font-weight: 500;
+  margin-bottom: 40px !important;
   letter-spacing: 0.5px;
 }
 
@@ -1151,8 +1162,8 @@ body {
 
 .footer-link {
   font-family: var(--font-manrope);
-  font-size: 0.95rem;
-  color: #888;
+  font-size: 16px;
+  color: #f7f7f7 !important;
   text-decoration: none;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -1235,16 +1246,6 @@ body {
   .submit-btn {
     width: 100%;
     justify-content: center;
-  }
-
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .footer-links {
-    flex-direction: column;
-    gap: 15px;
   }
 }
 

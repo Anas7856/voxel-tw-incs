@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Roblox Community</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --font-manrope: "Manrope", sans-serif;
+        --font-bh: "BBH Sans Bogle", -apple-system, BlinkMacSystemFont,
+          sans-serif;
+        --primary-color: #ff0d55;
+      }
+
+      body {
+        font-family: var(--font-manrope);
+        background: #0a0a0a;
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section */
+      .hero {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1a 100%);
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        width: 600px;
+        height: 600px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        filter: blur(150px);
+        opacity: 0.15;
+        top: -200px;
+        right: -200px;
+        animation: float 8s ease-in-out infinite;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: #00d4ff;
+        border-radius: 50%;
+        filter: blur(120px);
+        opacity: 0.1;
+        bottom: -150px;
+        left: -150px;
+        animation: float 6s ease-in-out infinite reverse;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translate(0, 0) scale(1);
+        }
+        50% {
+          transform: translate(30px, 30px) scale(1.1);
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 900px;
+        padding: 2rem;
+      }
+
+      .hero-badge {
+        display: inline-block;
+        padding: 0.5rem 1.5rem;
+        background: rgba(255, 13, 85, 0.1);
+        border: 1px solid rgba(255, 13, 85, 0.3);
+        border-radius: 50px;
+        color: var(--primary-color);
+        font-size: 0.875rem;
+        font-weight: 600;
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .hero h1 {
+        font-family: var(--font-bh);
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        color: white;
+      }
+      .hero h1 span {
+        color: var(--primary-color);
+      }
+      .hero p {
+        font-size: clamp(1.1rem, 2vw, 1.3rem);
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 3rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .scroll-indicator {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        color: rgba(255, 255, 255, 0.5);
+        font-size: 0.875rem;
+      }
+
+      .scroll-indicator::after {
+        content: "";
+        width: 2px;
+        height: 40px;
+        background: linear-gradient(
+          to bottom,
+          var(--primary-color),
+          transparent
+        );
+        animation: scroll 2s ease-in-out infinite;
+      }
+
+      @keyframes scroll {
+        0%,
+        100% {
+          opacity: 0;
+          transform: translateY(-10px);
+        }
+        50% {
+          opacity: 1;
+          transform: translateY(10px);
+        }
+      }
+
+      /* About Section */
+      .about-section {
+        padding: 50px 40px 20px 40px;
+        background: #0a0a0a;
+        position: relative;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-label {
+        font-size: 0.875rem;
+        color: var(--primary-color);
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 1rem;
+      }
+
+      .section-title {
+        font-family: var(--font-bh);
+        font-size: 60px;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+      }
+      .section-title-coummunity {
+        font-size: 60px !important;
+      }
+      .about-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-text p {
+        font-size: 1.125rem;
+        line-height: 1.9;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 1.5rem;
+      }
+
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .stat-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 13, 85, 0.05) 0%,
+          rgba(0, 212, 255, 0.05) 100%
+        );
+        padding: 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transition: transform 0.3s ease, border-color 0.3s ease;
+      }
+
+      .stat-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--primary-color);
+      }
+
+      .stat-number {
+        font-family: var(--font-bh);
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        line-height: 1;
+        margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: rgba(255, 255, 255, 0.6);
+      }
+
+      /* Mission Section */
+      .mission-section {
+        padding: 20px 40px;
+        background: linear-gradient(180deg, #0a0a0a 0%, #1a0515 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .mission-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+
+      .mission-visual {
+        position: relative;
+        height: 500px;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 13, 85, 0.1) 0%,
+          rgba(0, 212, 255, 0.1) 100%
+        );
+        border-radius: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+      }
+      .mission-visual img {
+        width: 100%;
+        object-fit: cover;
+      }
+      .floating-shapes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+
+      .shape {
+        position: absolute;
+        background: var(--primary-color);
+        opacity: 0.2;
+        border-radius: 20px;
+        animation: floatShape 10s ease-in-out infinite;
+      }
+
+      .shape:nth-child(1) {
+        width: 100px;
+        height: 100px;
+        top: 10%;
+        left: 10%;
+        animation-delay: 0s;
+      }
+
+      .shape:nth-child(2) {
+        width: 150px;
+        height: 150px;
+        top: 50%;
+        right: 10%;
+        animation-delay: 2s;
+        background: #00d4ff;
+      }
+
+      .shape:nth-child(3) {
+        width: 80px;
+        height: 80px;
+        bottom: 15%;
+        left: 30%;
+        animation-delay: 4s;
+      }
+
+      @keyframes floatShape {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(20px, -20px) rotate(120deg);
+        }
+        66% {
+          transform: translate(-20px, 20px) rotate(240deg);
+        }
+      }
+
+      .mission-text h2 {
+        font-family: var(--font-bh);
+        font-size: clamp(2rem, 4vw, 3.5rem);
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+      }
+
+      .mission-text p {
+        font-size: 1.125rem;
+        line-height: 1.9;
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 2rem;
+      }
+
+      .feature-list {
+        list-style: none;
+      }
+
+      .feature-list li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        font-size: 1.125rem;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .feature-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #ff4d87 100%
+        );
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        font-size: 1.25rem;
+      }
+
+      /* Community Section */
+      .community-section {
+        padding: 8rem 2rem;
+        background: #0a0a0a;
+      }
+
+      .community-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 4rem;
+      }
+
+      .community-card {
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.03) 0%,
+          rgba(255, 255, 255, 0.01) 100%
+        );
+        padding: 3rem 2rem;
+        border-radius: 25px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        text-align: center;
+        transition: all 0.4s ease;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .community-card::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 13, 85, 0.1) 0%,
+          transparent 70%
+        );
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .community-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary-color);
+      }
+
+      .community-card:hover::before {
+        opacity: 1;
+      }
+
+      .card-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #ff4d87 100%
+        );
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        margin: 0 auto 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .community-card h3 {
+        font-family: var(--font-bh);
+        font-size: 1.75rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .community-card p {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.6);
+        position: relative;
+        z-index: 1;
+      }
+
+      @media (max-width: 768px) {
+        .mission-content {
+          grid-template-columns: 1fr;
+        }
+
+        .mission-visual {
+          height: 300px;
+          order: -1;
+        }
+
+        .stats-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .about-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script src="script.js"></script>
+    <script>
+      // Counter Animation
+      function animateCounter(element, target, duration = 2000) {
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            if (target === 247) {
+              element.textContent = "24/7";
+            } else {
+              element.textContent = formatNumber(target);
+            }
+            clearInterval(timer);
+          } else {
+            element.textContent = formatNumber(Math.floor(current));
+          }
+        }, 16);
+      }
+
+      function formatNumber(num) {
+        if (num >= 1000000) {
+          return (num / 1000000).toFixed(1).replace(".0", "") + "M+";
+        } else if (num >= 1000) {
+          return (num / 1000).toFixed(0) + "K+";
+        }
+        return num;
+      }
+
+      // Intersection Observer for counter animation
+      const observerOptions = {
+        threshold: 0.5,
+        rootMargin: "0px",
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (
+            entry.isIntersecting &&
+            !entry.target.classList.contains("counted")
+          ) {
+            entry.target.classList.add("counted");
+            const target = parseInt(entry.target.getAttribute("data-target"));
+            animateCounter(entry.target, target);
+          }
+        });
+      }, observerOptions);
+
+      // Initialize on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".stat-number").forEach((counter) => {
+          observer.observe(counter);
+        });
+      });
+    </script>
+    <!-- navbar -->
+    <div class="navbar">
+      <div class="nav-logo">
+        <img src="imgs/tester-removebg-preview.png" alt="Volex Logo" />
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="nav-links-box" id="navLinks">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="nav-button-box" id="navButton">
+        <a href="#contact">
+          <button>Get Started</button>
+        </a>
+      </div>
+    </div>
+    <!-- navbar -->
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <div class="hero-badge">About Our Platform</div>
+        <h1>Building the Future <span>of Creative Gaming</span></h1>
+        <p>
+          We're a passionate community dedicated to empowering creators and
+          players to imagine, build, and share incredible experiences in the
+          Roblox universe. Join millions of innovators shaping the metaverse.
+        </p>
+      </div>
+      <div class="scroll-indicator">Scroll to explore</div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Who We Are</div>
+          <h2 class="section-title">Our Story</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Founded by gamers for gamers, our platform has grown into one of
+              the most vibrant Roblox communities. We believe in the power of
+              creativity and collaboration, providing tools, resources, and
+              support for developers and players alike.
+            </p>
+            <p>
+              From humble beginnings to a thriving ecosystem of creators, we've
+              remained committed to our core values: innovation, community, and
+              accessibility. Every day, thousands of users connect through our
+              platform to learn, create, and play together.
+            </p>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number" data-target="500000">0</div>
+              <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="10000">0</div>
+              <div class="stat-label">Games Created</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="1000000">0</div>
+              <div class="stat-label">Daily Visits</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number" data-target="247">0</div>
+              <div class="stat-label">Support Available</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section class="mission-section">
+      <div class="container">
+        <div class="mission-content">
+          <div class="mission-visual">
+            <img
+              src="imgs/rendering-cartoon-fantasy-scene-illustration.jpg"
+              alt=""
+            />
+          </div>
+          <div class="mission-text">
+            <div class="section-label">Our Mission</div>
+            <h2>Empowering Creators Worldwide</h2>
+            <p>
+              We're on a mission to democratize game development and make
+              creative expression accessible to everyone. Through cutting-edge
+              tools, comprehensive tutorials, and a supportive community, we're
+              breaking down barriers to entry in the gaming industry.
+            </p>
+            <ul class="feature-list">
+              <li>
+                <div class="feature-icon">🎮</div>
+                <span
+                  >Free resources and development tools for all skill
+                  levels</span
+                >
+              </li>
+              <li>
+                <div class="feature-icon">🚀</div>
+                <span
+                  >Launch pad for aspiring game developers and creators</span
+                >
+              </li>
+              <li>
+                <div class="feature-icon">🤝</div>
+                <span
+                  >Collaborative environment fostering innovation and
+                  growth</span
+                >
+              </li>
+              <li>
+                <div class="feature-icon">💎</div>
+                <span
+                  >Monetization support to turn passion into profession</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Community Section -->
+    <section class="community-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-label">Why Choose Us</div>
+          <h2 class="section-title-coummunity">What Makes Us Different</h2>
+        </div>
+        <div class="community-grid">
+          <div class="community-card">
+            <div class="card-icon">🎨</div>
+            <h3>Creative Freedom</h3>
+            <p>
+              Express your imagination without limits. Our platform provides all
+              the tools and flexibility you need to bring your wildest game
+              concepts to life.
+            </p>
+          </div>
+          <div class="community-card">
+            <div class="card-icon">👥</div>
+            <h3>Thriving Community</h3>
+            <p>
+              Connect with fellow creators, share knowledge, get feedback, and
+              collaborate on projects. Our community is here to support your
+              journey every step of the way.
+            </p>
+          </div>
+          <div class="community-card">
+            <div class="card-icon">📚</div>
+            <h3>Learning Resources</h3>
+            <p>
+              Access hundreds of tutorials, documentation, and guides created by
+              experts. From beginner to advanced, we've got resources for every
+              skill level.
+            </p>
+          </div>
+          <div class="community-card">
+            <div class="card-icon">🏆</div>
+            <h3>Rewards & Recognition</h3>
+            <p>
+              Showcase your talent through competitions, featured spotlights,
+              and achievement systems. Get recognized for your contributions to
+              the community.
+            </p>
+          </div>
+          <div class="community-card">
+            <div class="card-icon">🔒</div>
+            <h3>Safe Environment</h3>
+            <p>
+              We prioritize safety with robust moderation tools, content
+              filtering, and security measures to ensure a positive experience
+              for all users.
+            </p>
+          </div>
+          <div class="community-card">
+            <div class="card-icon">⚡</div>
+            <h3>Constant Innovation</h3>
+            <p>
+              Stay ahead with regular updates, new features, and cutting-edge
+              technology. We're always evolving to meet the needs of modern
+              creators.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
