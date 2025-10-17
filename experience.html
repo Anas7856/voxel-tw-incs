@@ -139,6 +139,91 @@
         text-transform: uppercase;
         letter-spacing: 1px;
       }
+      /* ===== Large Screen Hero Optimization ===== */
+      @media (min-width: 1600px) {
+        .experience-hero {
+          padding: 220px 60px 120px;
+        }
+
+        .hero-content {
+          max-width: 1200px;
+        }
+
+        .hero-title {
+          font-size: 8rem;
+          line-height: 1.05;
+        }
+
+        .hero-description {
+          font-size: 1.6rem;
+          max-width: 900px;
+        }
+
+        .hero-stats {
+          gap: 100px;
+        }
+
+        .stat-number {
+          font-size: 3.8rem;
+        }
+
+        .stat-label {
+          font-size: 1.1rem;
+        }
+
+        .hero-grid {
+          background-size: 100px 100px;
+        }
+      }
+
+      /* ===== Ultra-Wide (2K - 4K) Displays ===== */
+      @media (min-width: 2000px) {
+        .experience-hero {
+          padding: 280px 100px 160px;
+        }
+
+        .hero-title {
+          font-size: 9rem;
+        }
+
+        .hero-description {
+          font-size: 1.8rem;
+          max-width: 1100px;
+        }
+
+        .hero-stats {
+          gap: 140px;
+        }
+
+        .stat-number {
+          font-size: 4.5rem;
+        }
+
+        .hero-grid {
+          background-size: 120px 120px;
+          opacity: 0.5;
+        }
+      }
+
+      /* ===== Mobile Optimization (optional cleanup) ===== */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 3rem;
+        }
+
+        .hero-description {
+          font-size: 1rem;
+        }
+
+        .hero-stats {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .stat-number {
+          font-size: 2.4rem;
+        }
+      }
 
       /* Games Grid Section */
       .games-grid-section {
@@ -433,6 +518,116 @@
           font-size: 2rem;
         }
       }
+      /* ===== Large Screen (≥1600px) ===== */
+      @media (min-width: 1600px) {
+        .games-grid-section {
+          padding: 160px 60px;
+        }
+
+        .section-title-wrapper {
+          margin-bottom: 100px;
+        }
+
+        .section-title {
+          font-size: 4.5rem;
+        }
+
+        .section-subtitle {
+          font-size: 1.4rem;
+        }
+
+        .filter-buttons {
+          gap: 25px;
+          margin-bottom: 80px;
+        }
+
+        .filter-btn {
+          padding: 14px 40px;
+          font-size: 1rem;
+        }
+
+        .games-grid {
+          max-width: 1800px;
+          grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+          gap: 60px;
+          padding: 0 40px;
+        }
+
+        .game-image-wrapper {
+          height: 340px;
+        }
+
+        .game-title {
+          font-size: 2.2rem;
+        }
+
+        .game-description {
+          font-size: 1.05rem;
+        }
+
+        .game-meta {
+          padding-top: 25px;
+        }
+
+        .scroll-top {
+          bottom: 60px;
+          right: 60px;
+          width: 70px;
+          height: 70px;
+        }
+
+        .scroll-top::before {
+          font-size: 2rem;
+        }
+      }
+
+      /* ===== Ultra-Wide Displays (≥2000px) ===== */
+      @media (min-width: 2000px) {
+        .games-grid-section {
+          padding: 200px 100px;
+        }
+
+        .section-title {
+          font-size: 5rem;
+        }
+
+        .section-subtitle {
+          font-size: 1.6rem;
+        }
+
+        .games-grid {
+          max-width: 2200px;
+          grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+          gap: 80px;
+        }
+
+        .game-image-wrapper {
+          height: 420px;
+        }
+
+        .game-title {
+          font-size: 2.5rem;
+        }
+
+        .game-description {
+          font-size: 1.2rem;
+        }
+
+        .game-meta {
+          padding-top: 30px;
+        }
+
+        .scroll-top {
+          bottom: 80px;
+          right: 80px;
+          width: 80px;
+          height: 80px;
+        }
+
+        .scroll-top::before {
+          font-size: 2.4rem;
+        }
+      }
     </style>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -440,7 +635,7 @@
     <!-- Navbar -->
     <div class="navbar">
       <div class="nav-logo">
-        <img src="imgs/tester-removebg-preview.png" alt="Volex Logo" />
+        <img src="imgs/VoxelTwo logoio white.png" alt="Volex Logo" />
       </div>
 
       <div class="hamburger" id="hamburger">
