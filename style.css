@@ -768,7 +768,7 @@ body {
 .marquee-track {
   display: flex;
   gap: 30px;
-  animation: marqueeScroll 40s linear infinite;
+  animation: marqueeScroll 10s linear infinite;
 }
 
 @keyframes marqueeScroll {
@@ -891,6 +891,28 @@ body {
 .marquee-container:hover .marquee-track {
   animation-play-state: paused;
 }
+/* ===== Marquee Responsive Behavior ===== */
+@media (max-width: 900px) {
+  .marquee-track {
+    animation: none !important;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 20px;
+    padding-bottom: 10px;
+  }
+
+  .game-card {
+    scroll-snap-align: center;
+    min-width: 80%;
+  }
+
+  .marquee-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
 /* ========== CONTACT SECTION STYLES ========== */
 .contact-section {
   position: relative;

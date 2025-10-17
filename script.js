@@ -572,3 +572,44 @@ function showNotification(message, type = "success") {
 window.addEventListener("resize", () => {
   ScrollTrigger.refresh();
 });
+// ========== MARQUEE RESPONSIVE BEHAVIOR ==========
+document.addEventListener("DOMContentLoaded", () => {
+  const marqueeTrack = document.querySelector(".marquee-track");
+
+  if (!marqueeTrack) return;
+
+  const isMobile = window.matchMedia("(max-width: 900px)").matches;
+
+  if (isMobile) {
+    // Disable CSS animation and allow manual scroll
+    marqueeTrack.style.animation = "none";
+    marqueeTrack.style.overflowX = "auto";
+    marqueeTrack.style.cursor = "grab";
+
+    // Optional: Add touch scroll smoothness
+    marqueeTrack.addEventListener("mousedown", (e) => {
+      marqueeTrack.isDown = true;
+      marqueeTrack.startX = e.pageX - marqueeTrack.offsetLeft;
+      marqueeTrack.scrollLeftStart = marqueeTrack.scrollLeft;
+      marqueeTrack.style.cursor = "grabbing";
+    });
+
+    marqueeTrack.addEventListener("mouseleave", () => {
+      marqueeTrack.isDown = false;
+      marqueeTrack.style.cursor = "grab";
+    });
+
+    marqueeTrack.addEventListener("mouseup", () => {
+      marqueeTrack.isDown = false;
+      marqueeTrack.style.cursor = "grab";
+    });
+
+    marqueeTrack.addEventListener("mousemove", (e) => {
+      if (!marqueeTrack.isDown) return;
+      e.preventDefault();
+      const x = e.pageX - marqueeTrack.offsetLeft;
+      const walk = (x - marqueeTrack.startX) * 1.5;
+      marqueeTrack.scrollLeft = marqueeTrack.scrollLeftStart - walk;
+    });
+  }
+});
