@@ -1542,7 +1542,7 @@ body {
 /* ========== LARGE SCREEN OPTIMIZATION ========== */
 @media (min-width: 1440px) {
   .contact-section {
-    padding: 200px 0;
+    padding: 270px 0;
   }
 
   .contact-container {
