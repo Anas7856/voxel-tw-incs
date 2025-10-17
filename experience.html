@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Experiences - VoxelTwo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=BBH+Sans+Bogle&family=Manrope:wght@200..800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+      :root {
+        --font-manrop: "Manrope", sans-serif;
+        --font-bh: "BBH Sans Bogle", sans-serif;
+        --primary-color: #ff0d55;
+        --bg-dark: #0a0a0a;
+        --bg-card: #16161d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: var(--font-manrope);
+        background: var(--bg-dark);
+        color: #fff;
+        overflow-x: hidden;
+      }
+
+      /* Hero Section */
+      .experience-hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+        padding: 150px 20px 100px;
+      }
+
+      .hero-background {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            circle at 30% 50%,
+            rgba(255, 13, 85, 0.15) 0%,
+            transparent 50%
+          ),
+          radial-gradient(
+            circle at 70% 80%,
+            rgba(107, 70, 255, 0.15) 0%,
+            transparent 50%
+          );
+        z-index: 0;
+      }
+
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+            rgba(255, 13, 85, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(255, 13, 85, 0.03) 1px, transparent 1px);
+        background-size: 80px 80px;
+        opacity: 0.4;
+        z-index: 0;
+      }
+
+      .hero-content {
+        text-align: center;
+        position: relative;
+        z-index: 2;
+        max-width: 900px;
+      }
+
+      .hero-subtitle {
+        font-size: 1.2rem;
+        color: var(--primary-color);
+        font-family: var(--font-bh);
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .hero-title {
+        font-size: 6rem;
+        font-weight: 900;
+        line-height: 1.1;
+        margin-bottom: 30px;
+        background: linear-gradient(135deg, #fff 0%, var(--primary-color) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -3px;
+      }
+
+      .hero-description {
+        font-size: 1.3rem;
+        color: #888;
+        max-width: 700px;
+        margin: 0 auto 40px;
+        line-height: 1.8;
+      }
+
+      .hero-stats {
+        display: flex;
+        justify-content: center;
+        gap: 60px;
+        margin-top: 60px;
+      }
+
+      .stat-box {
+        text-align: center;
+      }
+
+      .stat-number {
+        font-size: 3rem;
+        font-weight: 900;
+        color: var(--primary-color);
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .stat-label {
+        font-size: 0.95rem;
+        color: #666;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      /* Games Grid Section */
+      .games-grid-section {
+        padding: 100px 20px;
+        position: relative;
+      }
+
+      .section-title-wrapper {
+        text-align: center;
+        margin-bottom: 80px;
+      }
+
+      .section-title {
+        font-size: 3.5rem;
+        font-weight: 900;
+        margin-bottom: 15px;
+        letter-spacing: -2px;
+      }
+
+      .section-subtitle {
+        font-size: 1.2rem;
+        color: #888;
+      }
+
+      /* Filter Buttons */
+      .filter-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 12px 30px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        color: #888;
+        font-family: var(--font-manrope);
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .filter-btn:hover,
+      .filter-btn.active {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+        color: #fff;
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(255, 13, 85, 0.3);
+      }
+
+      /* Games Grid */
+      .games-grid {
+        max-width: 1400px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 40px;
+        padding: 0 20px;
+      }
+
+      .game-item {
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        text-decoration: none;
+        cursor: pointer;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        background: var(--bg-card);
+        border: 2px solid rgba(255, 13, 85, 0.1);
+      }
+
+      .game-item:hover {
+        transform: translateY(-15px);
+        border-color: var(--primary-color);
+        box-shadow: 0 25px 60px rgba(255, 13, 85, 0.4);
+      }
+
+      .game-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 280px;
+        overflow: hidden;
+      }
+
+      .game-item:hover .game-image {
+        transform: scale(1.15);
+      }
+
+      .game-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .game-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: var(--primary-color);
+        color: #fff;
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        z-index: 2;
+        box-shadow: 0 5px 15px rgba(255, 13, 85, 0.4);
+      }
+
+      .game-play-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.95) 0%,
+          transparent 60%
+        );
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        z-index: 1;
+      }
+
+      .game-item:hover .game-play-overlay {
+        opacity: 1;
+      }
+
+      .play-button {
+        width: 80px;
+        height: 80px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 40px rgba(255, 13, 85, 0.6);
+        transform: scale(0.8);
+        transition: transform 0.3s ease;
+      }
+
+      .game-item:hover .play-button {
+        transform: scale(1);
+      }
+
+      .play-button::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-left: 20px solid #fff;
+        border-top: 12px solid transparent;
+        border-bottom: 12px solid transparent;
+        margin-left: 5px;
+      }
+
+      .game-info {
+        padding: 30px;
+      }
+
+      .game-title {
+        font-size: 1.8rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        line-height: 1.2;
+      }
+
+      .game-genre {
+        display: inline-block;
+        color: var(--primary-color);
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+      }
+
+      .game-description {
+        color: #888;
+        line-height: 1.7;
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+
+      .game-meta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .game-players,
+      .game-rating {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+        color: #666;
+        font-weight: 600;
+      }
+
+      .icon {
+        width: 18px;
+        height: 18px;
+        opacity: 0.7;
+      }
+
+      .rating-star {
+        color: #ffc107;
+      }
+
+      /* Scroll to Top Button */
+      .scroll-top {
+        position: fixed;
+        bottom: 40px;
+        right: 40px;
+        width: 60px;
+        height: 60px;
+        background: var(--primary-color);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        opacity: 0;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        z-index: 1000;
+        box-shadow: 0 10px 30px rgba(255, 13, 85, 0.4);
+      }
+
+      .scroll-top.visible {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .scroll-top:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(255, 13, 85, 0.6);
+      }
+
+      .scroll-top::before {
+        content: "↑";
+        font-size: 1.8rem;
+        font-weight: 900;
+        color: #fff;
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .games-grid {
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 3.5rem;
+        }
+
+        .hero-stats {
+          flex-direction: column;
+          gap: 30px;
+        }
+
+        .section-title {
+          font-size: 2.5rem;
+        }
+
+        .games-grid {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 2.5rem;
+        }
+
+        .stat-number {
+          font-size: 2rem;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <div class="navbar">
+      <div class="nav-logo">
+        <img src="imgs/tester-removebg-preview.png" alt="Volex Logo" />
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="nav-links-box" id="navLinks">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="experience.html">Experience</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="nav-button-box" id="navButton">
+        <button>Get Started</button>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="experience-hero">
+      <div class="hero-background"></div>
+      <div class="hero-grid"></div>
+
+      <div class="hero-content">
+        <p class="hero-subtitle">Our Portfolio</p>
+        <h1 class="hero-title">Immersive Experiences</h1>
+        <p class="hero-description">
+          Discover our collection of cutting-edge games and experiences built
+          for Roblox. Each project is crafted with passion, innovation, and
+          attention to detail.
+        </p>
+      </div>
+    </section>
+
+    <!-- Games Grid Section -->
+    <section class="games-grid-section">
+      <div class="section-title-wrapper">
+        <h2 class="section-title">Featured Games</h2>
+        <p class="section-subtitle">
+          Browse through our most popular experiences
+        </p>
+      </div>
+
+      <!-- Filter Buttons -->
+      <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All Games</button>
+        <button class="filter-btn" data-filter="action">Action</button>
+        <button class="filter-btn" data-filter="adventure">Adventure</button>
+        <button class="filter-btn" data-filter="rpg">RPG</button>
+        <button class="filter-btn" data-filter="simulator">Simulator</button>
+      </div>
+
+      <!-- Games Grid -->
+      <div class="games-grid">
+        <!-- Game 1 -->
+        <a
+          href="https://www.roblox.com/games/5803116693/ION-FORMULA-RACING-2023"
+          class="game-item"
+          data-category="action"
+          target="_blank"
+        >
+          <article class="game-item" data-category="action">
+            <div class="game-image-wrapper">
+              <img
+                src="imgs/ionracing.png"
+                alt="Cyber Legends"
+                class="game-image"
+              />
+              <span class="game-badge">New</span>
+              <div class="game-play-overlay">
+                <div class="play-button"></div>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Cyber Legends</h3>
+              <span class="game-genre">Action RPG</span>
+              <p class="game-description">
+                Enter a dystopian cyberpunk world where you fight for survival
+                in intense PvP battles and explore vast neon-lit cities.
+              </p>
+              <div class="game-meta">
+                <div class="game-players">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    />
+                  </svg>
+                  <span>2.5M+</span>
+                </div>
+                <div class="game-rating">
+                  <span class="rating-star">★</span>
+                  <span>4.8</span>
+                </div>
+              </div>
+            </div>
+          </article></a
+        >
+
+        <!-- Game 2 -->
+        <a
+          href="https://www.roblox.com/games/6590445138/NEW-Island-Survival"
+          class="game-item"
+          data-category="action"
+          target="_blank"
+        >
+          <article class="game-item" data-category="adventure">
+            <div class="game-image-wrapper">
+              <img
+                src="imgs/islandsurvival.png"
+                alt="Neon Warriors"
+                class="game-image"
+              />
+              <span class="game-badge">Popular</span>
+              <div class="game-play-overlay">
+                <div class="play-button"></div>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Island Survival</h3>
+              <span class="game-genre">Survival</span>
+              <p class="game-description">
+                Fast-paced competitive shooter with unique abilities, stunning
+                visuals, and ranked gameplay modes.
+              </p>
+              <div class="game-meta">
+                <div class="game-players">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    />
+                  </svg>
+                  <span>1.8M+</span>
+                </div>
+                <div class="game-rating">
+                  <span class="rating-star">★</span>
+                  <span>4.9</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </a>
+
+        <!-- Game 3 -->
+        <a
+          href="https://www.roblox.com/games/12814054712/Mayor-Of-Chain-Town"
+          class="game-item"
+          data-category="action"
+          target="_blank"
+        >
+          <article class="game-item" data-category="rpg">
+            <div class="game-image-wrapper">
+              <img
+                src="imgs/MayorOfChainTown.png"
+                alt="Quantum Realm"
+                class="game-image"
+              />
+              <div class="game-play-overlay">
+                <div class="play-button"></div>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Mayor Of Chain Town</h3>
+              <span class="game-genre">Adventure</span>
+              <p class="game-description">
+                Explore parallel dimensions and solve mind-bending puzzles in
+                this story-driven adventure game.
+              </p>
+              <div class="game-meta">
+                <div class="game-players">
+                  <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+                    />
+                  </svg>
+                  <span>950K+</span>
+                </div>
+                <div class="game-rating">
+                  <span class="rating-star">★</span>
+                  <span>4.7</span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </a>
+      </div>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>
